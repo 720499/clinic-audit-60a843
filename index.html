@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Клиника „Артрия“ на ПроДокторов</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400&family=PT+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --c-text:#1A1A1A; --c-body:#2C2C2C; --c-muted:#666666;
+    --c-bg:#FFFFFF; --c-accent:#0B1F3A; --c-hairline:#E5E5E5;
+    --c-rule:#CCCCCC; --c-ctx:#F7F7F7;
+    --c-red:#B23A2E; --c-redbg:#FBF2F0; --c-amber:#B5781F; --c-green:#2E6B3E;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{margin:0; background:var(--c-bg); color:var(--c-body);
+    font-family:'PT Sans',sans-serif; font-size:17px; line-height:1.62; -webkit-font-smoothing:antialiased;}
+  .wrap{max-width:880px; margin:0 auto; padding:0 24px;}
+  h1,h2,h3{font-family:'PT Serif',serif; color:var(--c-text); font-weight:700; letter-spacing:-0.01em;}
+  h1{font-size:34px; line-height:1.18; margin:0 0 14px;}
+  h2{font-size:25px; line-height:1.25; margin:0 0 6px;}
+  h3{font-size:18px; margin:0 0 6px;}
+  p{margin:0 0 14px;}
+  a{color:var(--c-accent); text-decoration:none; border-bottom:1px solid rgba(11,31,58,.25);}
+  a:hover{border-bottom-color:var(--c-accent);}
+  .muted{color:var(--c-muted);}
+  .eyebrow{font-family:'PT Sans',sans-serif; font-weight:700; font-size:12px; text-transform:uppercase;
+    letter-spacing:0.14em; color:var(--c-accent); margin:0 0 12px;}
+  header.hero{padding:60px 0 38px; border-bottom:1px solid var(--c-rule);}
+  .hero .meta{font-size:15px; color:var(--c-muted); margin:0;}
+  .hero .lead{font-size:18px; color:var(--c-body); margin:18px 0 0; max-width:740px;}
+  .hero .stamp{display:inline-block; margin-top:22px; font-size:14px; color:var(--c-muted);
+    border-left:2px solid var(--c-accent); padding:4px 0 4px 14px;}
+  section{padding:40px 0; border-bottom:1px solid var(--c-hairline);}
+  section:last-of-type{border-bottom:none;}
+  .lead-p{font-size:17px; color:var(--c-body); margin:0 0 22px; max-width:740px;}
+  /* KPI bar */
+  .kpis{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin:6px 0 4px;}
+  .kpi{border:1px solid var(--c-hairline); border-radius:6px; padding:16px 18px;}
+  .kpi .big{font-family:'PT Serif',serif; font-weight:700; color:var(--c-accent); font-size:26px; line-height:1.1;}
+  .kpi .lbl{font-size:13px; color:var(--c-muted); text-transform:uppercase; letter-spacing:.05em; margin:6px 0 0;}
+  /* tables */
+  .tablewrap{overflow-x:auto; margin:0 -2px;}
+  table{width:100%; border-collapse:collapse; font-size:15px; min-width:560px;}
+  th,td{text-align:left; padding:10px 12px; border-bottom:1px solid var(--c-hairline); vertical-align:top;}
+  th{font-family:'PT Sans',sans-serif; font-weight:700; color:var(--c-text); font-size:12px;
+    text-transform:uppercase; letter-spacing:0.07em; border-bottom:1.5px solid var(--c-rule);}
+  td.num{white-space:nowrap; font-weight:700; color:var(--c-text);}
+  tr.ours{background:#F4EFE6;}
+  tr.ours td{font-weight:700;}
+  tr.leader td.lead-cell{color:var(--c-accent); font-weight:700;}
+  .srcnote{font-size:13px; color:var(--c-muted); margin-top:8px;}
+  /* checklist */
+  ul.check{list-style:none; margin:6px 0 0; padding:0;}
+  ul.check li{padding:13px 0; border-bottom:1px solid var(--c-hairline); display:flex; gap:14px; align-items:baseline;}
+  ul.check li:last-child{border-bottom:none;}
+  ul.check .ci{flex:1;} ul.check .ci b{color:var(--c-text);} ul.check .ci .note{color:var(--c-muted); font-size:14px;}
+  .chip{display:inline-block; font-family:'PT Sans',sans-serif; font-weight:700; font-size:12px;
+    padding:2px 9px; border-radius:11px; white-space:nowrap; background:#EEF1F4; color:var(--c-muted); min-width:96px; text-align:center;}
+  .chip.ok{background:#EDF4EE; color:var(--c-green);}
+  .chip.no{background:var(--c-redbg); color:var(--c-red);}
+  .chip.part{background:#FBF6EC; color:var(--c-amber);}
+  /* red bottleneck block */
+  .danger{background:var(--c-redbg); border-left:3px solid var(--c-red); padding:22px 24px; margin:16px 0 0; border-radius:0 4px 4px 0;}
+  .danger .eyebrow{color:var(--c-red);} .danger h3{color:var(--c-red); margin-top:0;}
+  .danger ul{margin:8px 0 0; padding-left:18px;} .danger li{margin:0 0 7px;} .danger li:last-child{margin-bottom:0;}
+  .ctx{background:var(--c-ctx); border-left:3px solid var(--c-accent); padding:22px 24px; margin:16px 0 0;}
+  .ctx h2,.ctx h3{margin-top:0;} .ctx p:last-child{margin-bottom:0;}
+  /* screenshots */
+  .shot{margin:14px 0 6px;}
+  .shot img{width:100%; height:auto; display:block; border:1px solid var(--c-hairline); border-radius:6px;}
+  .shot figcaption{font-size:13px; color:var(--c-muted); margin-top:8px;}
+  .pair{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:14px 0 6px;}
+  .pair figure{margin:0;}
+  .pair img{width:100%; height:auto; display:block; border:1px solid var(--c-hairline); border-radius:6px;}
+  .pair figcaption{font-size:13px; color:var(--c-muted); margin-top:8px;}
+  .mob{display:grid; grid-template-columns:1fr 1fr; gap:16px; max-width:560px; margin:14px 0 6px;}
+  .mob figure{margin:0;}
+  .mob img{width:100%; height:auto; display:block; border:1px solid var(--c-hairline); border-radius:6px;}
+  .mob figcaption{font-size:13px; color:var(--c-muted); margin-top:8px;}
+  /* 650 estimate band */
+  .scoreband{display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; margin:6px 0 4px;}
+  .scoreband .num{font-family:'PT Serif',serif; font-weight:700; color:var(--c-accent); font-size:38px; line-height:1;}
+  .scoreband .of{font-size:18px; color:var(--c-muted);}
+  .scoreband .tag{font-size:13px; color:var(--c-muted); background:#EEF1F4; padding:3px 10px; border-radius:11px;}
+  .scoretrack{height:14px; background:#EEF1F4; border-radius:7px; overflow:hidden; margin:14px 0 4px; position:relative;}
+  .scoretrack .sure{position:absolute; left:0; top:0; bottom:0; background:var(--c-accent);}
+  .scoretrack .band{position:absolute; top:0; bottom:0; background:rgba(11,31,58,.28);}
+  .basis{font-family:'PT Sans',sans-serif; font-weight:700; font-size:11px; padding:2px 8px; border-radius:10px; white-space:nowrap;}
+  .basis.sure{background:#EDF4EE; color:var(--c-green);}
+  .basis.est{background:#FBF6EC; color:var(--c-amber);}
+  .basis.lk{background:var(--c-redbg); color:var(--c-red);}
+  /* educational list */
+  ul.edu{list-style:none; margin:6px 0 0; padding:0;}
+  ul.edu li{padding:13px 0; border-bottom:1px solid var(--c-hairline);}
+  ul.edu li:last-child{border-bottom:none;}
+  ul.edu .et{font-family:'PT Serif',serif; font-weight:700; color:var(--c-text); font-size:16px; margin:0 0 3px;}
+  ul.edu .ed{font-size:15px; color:var(--c-body); margin:0;} ul.edu .ed b{color:var(--c-text);}
+  /* CTA */
+  .cta{background:var(--c-accent); color:#fff; border-radius:8px; padding:30px 28px; margin:16px 0 0;}
+  .cta h2{color:#fff; margin:0 0 8px;}
+  .cta p{color:#E7ECF2; margin:0 0 18px; max-width:640px;}
+  .cta a.btn{display:inline-block; background:#fff; color:var(--c-accent); font-family:'PT Sans',sans-serif;
+    font-weight:700; font-size:16px; padding:13px 26px; border-radius:6px; border:none;}
+  .cta a.btn:hover{background:#EEF1F4;}
+  /* legal */
+  .legal{font-size:13.5px; color:var(--c-muted); line-height:1.6;}
+  .legal b{color:var(--c-body);}
+  footer.sig{padding:32px 0 60px; color:var(--c-muted); font-size:14px;}
+  footer.sig b{color:var(--c-text); font-family:'PT Serif',serif;}
+  /* КП: вердикт-блок, строки-провалы, сводка пробелов */
+  tr.gap td{background:var(--c-redbg);}
+  tr.gain td{background:#EDF4EE;}
+  .verdict .row{display:flex; gap:30px; flex-wrap:wrap; margin-top:10px;}
+  .verdict .row .it .v{font-family:'PT Serif',serif; font-weight:700; color:var(--c-accent); font-size:25px; line-height:1.1;}
+  .verdict .row .it .v.red{color:var(--c-red);}
+  .verdict .row .it .k{font-size:13px; color:var(--c-muted); margin-top:2px;}
+  .gaps{background:var(--c-redbg); border-left:3px solid var(--c-red); padding:18px 22px; margin:20px 0 0; border-radius:0 4px 4px 0;}
+  .gaps h3{color:var(--c-red); margin:0 0 8px;} .gaps ul{margin:0; padding-left:18px;}
+  .gaps li{margin:0 0 7px;} .gaps li:last-child{margin-bottom:0;}
+  .evid{display:grid; grid-template-columns:1fr; gap:18px; margin:16px 0 6px;}
+  .evid figure{margin:0;} .evid img{width:100%; height:auto; display:block; border:1px solid var(--c-hairline); border-radius:6px;}
+  .evid figcaption{font-size:14px; color:var(--c-body); margin-top:8px;} .evid figcaption b{color:var(--c-text);}
+  /* сравнение «лбами»: 2 колонки take/beat + pull-quote + таргет-колонка */
+  .cols2{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:18px 0 0;}
+  .card{border:1px solid var(--c-hairline); border-radius:6px; padding:18px 20px;}
+  .card.take{border-top:3px solid var(--c-amber);} .card.beat{border-top:3px solid var(--c-green);}
+  .card h3{margin:0 0 10px; font-size:16px;} .card ul{margin:0; padding-left:18px;}
+  .card li{margin:0 0 8px; font-size:15px;} .card li:last-child{margin-bottom:0;}
+  .quote{font-family:'PT Serif',serif; font-style:italic; font-size:19px; color:var(--c-text);
+    border-left:3px solid var(--c-accent); padding:6px 0 6px 18px; margin:20px 0 0;}
+  td.t-now{font-weight:700;} td.t-goal{color:var(--c-green); font-weight:700; white-space:nowrap;}
+  .win{color:var(--c-green); font-weight:700;} .lose{color:var(--c-red); font-weight:700;}
+  .gapcol{font-size:13.5px; color:var(--c-body);} .gapcol b{color:var(--c-red);}
+  @media (max-width:680px){
+    .cols2{grid-template-columns:1fr;}
+    body{font-size:16px;} h1{font-size:26px;} h2{font-size:21px;}
+    .kpis{grid-template-columns:1fr 1fr;} .pair{grid-template-columns:1fr;}
+    .mob{grid-template-columns:1fr;} .chip{min-width:0;}
+    ul.check li{flex-direction:column; gap:4px;}
+  }
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<p class="eyebrow">Разбор карточки на ПроДокторов</p>
+<h1>«Клиника „Артрия“» на ПроДокторов: где утекают записи</h1>
+<p class="meta">Уфа · <a href="https://prodoctorov.ru/ufa/lpu/116366-artriya/" target="_blank" rel="noopener nofollow">ваша карточка</a></p>
+<p class="lead">Площадки берут деньги вперёд. Пациент идёт к тем, кто выше в списке. Я открыл вашу карточку так, как её видит человек, который прямо сейчас выбирает куда записаться. Ниже на скринах вашей карточки видно, где утекают записи и кто их забирает. За каждую утёкшую запись вы уже заплатили площадке. Я веду свои клиники на ПроДокторов и прохожу эти грабли сам.</p>
+</div></header>
+<section><div class="wrap">
+<p class="eyebrow">Снимок карточки</p>
+<h2>Где вы сейчас и куда расти</h2>
+<p class="lead-p">Вот что видит пациент в вашей карточке. Каждый показатель ниже это не спортивная таблица, а записи, которые вы либо забираете, либо отдаёте соседу по списку.</p>
+<div class="kpis">
+<div class="kpi"><div class="big">4.9</div><div class="lbl">ваш рейтинг · цель 5.0</div></div>
+<div class="kpi"><div class="big">75</div><div class="lbl">ваших отзывов · макс по отзывам в радиусе: 1 088</div></div>
+<div class="kpi"><div class="big">8</div><div class="lbl">ваших врачей · у врачей карточки сравнения: 13</div></div>
+<div class="kpi"><div class="big">148</div><div class="lbl">цен · цель полный авто-прайс</div></div>
+</div>
+<p class="lead-p" style="margin-top:16px;">Балл ранжирования <b>~308–358 из 650</b>, до 650 не хватает ~292.<br>Последний отзыв <b>18 ноября 2026</b>, 1 дн. назад.<br>Упущено позиций в карточке <b>2</b>.</p>
+</div></section>
+<section><div class="wrap">
+<p class="eyebrow">Карта баллов ПроДокторов</p>
+<h2>Что вы добираете из 650, а что упускаете</h2>
+<p class="lead-p">Позиция в общем списке города складывается из баллов ранжирования до 650. Каждая позиция вниз это пациенты, которые тапнули на клинику выше вас. Они уже искали врача, дошли до списка, но записались не к вам. Самый красный резерв сверху, с него и начинаем.</p>
+<div class="scoreband">
+<span class="num">~308–358</span><span class="of">/ 650</span>
+<span class="tag">видимый резерв ~292</span>
+</div>
+<div class="scoretrack">
+<div class="sure" style="width:21.7%"></div>
+<div class="band" style="left:47.4%; width:7.7%"></div>
+</div>
+<div class="tablewrap"><table>
+<thead><tr><th>Параметр</th><th>Сейчас</th><th>Баллы</th><th>До цели</th></tr></thead><tbody>
+<tr class="gap"><td>Успешность записи в клинику за 30 дней</td><td><span class="chip">нужен кабинет</span></td><td class="num">— / 100</td><td><span class="t-goal">добрать</span></td></tr>
+<tr class="gap"><td>Доступность записи ≥15 часов в сутки</td><td><span class="chip">нужен кабинет</span></td><td class="num">— / 50</td><td><span class="t-goal">добрать</span></td></tr>
+<tr class="gap"><td>Звёздный рейтинг (звёзды×30)</td><td><span class="chip part">◐ частично</span></td><td class="num">147 / 150</td><td><span class="t-goal">+3</span></td></tr>
+<tr class="gain"><td>Онлайн-запись на услуги</td><td><span class="chip ok">✓ есть</span></td><td class="num">3 / 100</td><td><span class="t-goal">✓ держать</span></td></tr>
+<tr class="gain"><td>Онлайн-запись к врачам</td><td><span class="chip ok">✓ есть</span></td><td class="num">8 / 100</td><td><span class="t-goal">✓ держать</span></td></tr>
+<tr class="gain"><td>Автоматическая выгрузка цен</td><td><span class="chip ok">✓ есть</span></td><td class="num">20 / 20</td><td><span class="t-goal">✓ держать</span></td></tr>
+<tr class="gain"><td>Клубная запись (Клуб ПроДокторов)</td><td><span class="chip ok">✓ есть</span></td><td class="num">70 / 70</td><td><span class="t-goal">✓ держать</span></td></tr>
+<tr class="gain"><td>Запись по телефону</td><td><span class="chip ok">✓ есть</span></td><td class="num">50 / 50</td><td><span class="t-goal">✓ держать</span></td></tr>
+<tr class="gain"><td>Видеовизитка</td><td><span class="chip ok">✓ есть</span></td><td class="num">10 / 10</td><td><span class="t-goal">✓ держать</span></td></tr>
+</tbody></table></div>
+<div class="gaps">
+<h3>Где вы теряете баллы и записи прямо сейчас</h3>
+<ul>
+<li><b>Премия ПроДокторов (клиника).</b> медали клиники нет: её дают клиникам, лучшим в регионе по отзывам пациентов за год (1 ноября – 31 октября), итоги в начале ноября</li>
+<li><b>Фотографии.</b> мало фото (3): добавить фасад и вход, регистратуру, холл, зону ожидания, кабинеты без врачей и пациентов. Нельзя: врачи за работой, пациенты, документы, медоборудование, акции и цены, мероприятия, надписи поверх фото</li>
+</ul></div>
+<div class="ctx"><h3 style="margin-top:0;">Где посмотреть точные баллы</h3><p>В личном кабинете клиники, раздел «Ранжирование клиники». Там общий балл и баллы по каждому из девяти критериев; стрелка рядом с пунктом раскрывает, за что он начисляется. После изменения (включили запись, загрузили видеовизитку) баллы пересчитываются в течение 10 минут.</p><p>Два критерия видны только в кабинете: успешность записи за 30 дней (баллы начисляются от 75 %, по 4 за каждый процент) и доступность записи (16 часов в сутки дают 8 баллов, 21 час и больше дают 50).</p><p style="margin-bottom:0;">Правила начисления: <a href="https://help.prodoctorov.ru/pravilaranzhirovaniya/" target="_blank" rel="noopener">справка ПроДокторов «Балльная система ранжирования клиник»</a>.</p></div>
+</div></section>
+<section><div class="wrap">
+<p class="eyebrow">Как выглядит ваша карточка</p>
+<h2>Врачи, видео и запись: лицо клиники в выдаче</h2>
+<div class="evid">
+<figure><img src="assets/doctors_grid.png" alt="Врачи и онлайн-запись на карточке"><figcaption><b>Ваши врачи на карточке (8).</b> Рейтинг и отзывы по каждому врачу дают половину рейтинга клиники и отдельные точки входа пациента. У каждого врача видны слоты онлайн-записи: пациент выбирает время прямо здесь.</figcaption></figure>
+<figure><img src="assets/online_booking.png" alt="Виджет онлайн-записи"><figcaption><b>Онлайн-запись подключена.</b> Пациент выбирает время прямо в карточке. Чем больше услуг и врачей открыто на запись, тем больше баллов и записей.</figcaption></figure>
+<figure><img src="assets/videovizitka.png" alt="Видеовизитка клиники"><figcaption><b>Видеовизитка клиники есть.</b> Ролик, где руководитель представляет клинику, даёт балл в рейтинге клиники (650) и теплее знакомит пациента до записи.</figcaption></figure>
+<div class="gaps" style="margin-top:0;"><h3>Видеовизитки врачей — отдельный рычаг (рейтинг врача, не клиники)</h3><p style="margin:0;">Видеовизитка есть у 6 из 8 врачей. Остальным 2 стоит снять ролик 15–60 секунд, вертикальный: это +10 к личному рейтингу врача (770) и подъём в списках врачей, где пациент ищет конкретного специалиста.</p></div>
+</div>
+</div></section>
+<section><div class="wrap">
+<p class="eyebrow">Поток отзывов</p>
+<h2>Сколько отзывов вы собираете и какой темп держать</h2>
+<p class="lead-p">Отзывы это главный сигнал доверия и топливо рейтинга. Рейтинг карточки складывается наполовину из отзывов о клинике, наполовину из отзывов о врачах — на графике оба потока по месяцам. Вес отзыва со временем падает, поэтому важен ровный поток.</p>
+<div style="margin:8px 0 6px;"><svg viewBox="0 0 920 348" width="100%" role="img" aria-label="Поток отзывов по месяцам: о клинике и о врачах" preserveAspectRatio="xMidYMid meet" font-family="PT Sans, sans-serif"><rect x="40" y="6" width="12" height="12" rx="2" fill="#0B1F3A"/><text x="58" y="16" font-size="12" fill="#333333">о клинике</text><rect x="152" y="6" width="12" height="12" rx="2" fill="#C8743A"/><text x="170" y="16" font-size="12" fill="#333333">о врачах</text><line x1="40" y1="278.0" x2="904" y2="278.0" stroke="#BBBBBB" stroke-width="1"/><text x="34" y="282.0" font-size="11" fill="#999999" text-anchor="end">0</text><line x1="40" y1="153.8" x2="904" y2="153.8" stroke="#EEEEEE" stroke-width="1"/><text x="34" y="157.8" font-size="11" fill="#999999" text-anchor="end">12</text><line x1="40" y1="40.0" x2="904" y2="40.0" stroke="#EEEEEE" stroke-width="1"/><text x="34" y="44.0" font-size="11" fill="#999999" text-anchor="end">23</text><text x="40.0" y="326.0" font-size="13" font-weight="700" fill="#444444">2024</text><line x1="73.2" y1="40" x2="73.2" y2="278" stroke="#DDDDDD" stroke-dasharray="3 3" stroke-width="1"/><text x="76.2" y="326.0" font-size="13" font-weight="700" fill="#444444">2025</text><line x1="508.2" y1="40" x2="508.2" y2="278" stroke="#DDDDDD" stroke-dasharray="3 3" stroke-width="1"/><text x="511.2" y="326.0" font-size="13" font-weight="700" fill="#444444">2026</text><rect x="40.0" y="278.0" width="14.1" height="0.0" rx="1.5" fill="#0B1F3A"><title>2024-12: клиника 0</title></rect><rect x="55.1" y="278.0" width="14.1" height="0.0" rx="1.5" fill="#C8743A"><title>2024-12: врачи 0</title></rect><text x="55.1" y="293.0" font-size="9.5" fill="#999999" text-anchor="middle">12</text><rect x="76.2" y="278.0" width="14.1" height="0.0" rx="1.5" fill="#0B1F3A"><title>2025-01: клиника 0</title></rect><rect x="91.4" y="278.0" width="14.1" height="0.0" rx="1.5" fill="#C8743A"><title>2025-01: врачи 0</title></rect><text x="91.4" y="293.0" font-size="9.5" fill="#999999" text-anchor="middle">01</text><rect x="112.5" y="278.0" width="14.1" height="0.0" rx="1.5" fill="#0B1F3A"><title>2025-02: клиника 0</title></rect><rect x="127.6" y="278.0" width="14.1" height="0.0" rx="1.5" fill="#C8743A"><title>2025-02: врачи 0</title></rect><text x="127.6" y="293.0" font-size="9.5" fill="#999999" text-anchor="middle">02</text><rect x="148.8" y="278.0" width="14.1" height="0.0" rx="1.5" fill="#0B1F3A"><title>2025-03: клиника 0</title></rect><rect x="163.9" y="278.0" width="14.1" height="0.0" rx="1.5" fill="#C8743A"><title>2025-03: врачи 0</title></rect><text x="163.9" y="293.0" font-size="9.5" fill="#999999" text-anchor="middle">03</text><rect x="185.0" y="278.0" width="14.1" height="0.0" rx="1.5" fill="#0B1F3A"><title>2025-04: клиника 0</title></rect><rect x="200.1" y="278.0" width="14.1" height="0.0" rx="1.5" fill="#C8743A"><title>2025-04: врачи 0</title></rect><text x="200.1" y="293.0" font-size="9.5" fill="#999999" text-anchor="middle">04</text><rect x="221.2" y="278.0" width="14.1" height="0.0" rx="1.5" fill="#0B1F3A"><title>2025-05: клиника 0</title></rect><rect x="236.4" y="278.0" width="14.1" height="0.0" rx="1.5" fill="#C8743A"><title>2025-05: врачи 0</title></rect><text x="236.4" y="293.0" font-size="9.5" fill="#999999" text-anchor="middle">05</text><rect x="257.5" y="278.0" width="14.1" height="0.0" rx="1.5" fill="#0B1F3A"><title>2025-06: клиника 0</title></rect><rect x="272.6" y="278.0" width="14.1" height="0.0" rx="1.5" fill="#C8743A"><title>2025-06: врачи 0</title></rect><text x="272.6" y="293.0" font-size="9.5" fill="#999999" text-anchor="middle">06</text><rect x="293.8" y="278.0" width="14.1" height="0.0" rx="1.5" fill="#0B1F3A"><title>2025-07: клиника 0</title></rect><rect x="308.9" y="278.0" width="14.1" height="0.0" rx="1.5" fill="#C8743A"><title>2025-07: врачи 0</title></rect><text x="308.9" y="293.0" font-size="9.5" fill="#999999" text-anchor="middle">07</text><rect x="330.0" y="278.0" width="14.1" height="0.0" rx="1.5" fill="#0B1F3A"><title>2025-08: клиника 0</title></rect><rect x="345.1" y="278.0" width="14.1" height="0.0" rx="1.5" fill="#C8743A"><title>2025-08: врачи 0</title></rect><text x="345.1" y="293.0" font-size="9.5" fill="#999999" text-anchor="middle">08</text><rect x="366.2" y="278.0" width="14.1" height="0.0" rx="1.5" fill="#0B1F3A"><title>2025-09: клиника 0</title></rect><rect x="381.4" y="278.0" width="14.1" height="0.0" rx="1.5" fill="#C8743A"><title>2025-09: врачи 0</title></rect><text x="381.4" y="293.0" font-size="9.5" fill="#999999" text-anchor="middle">09</text><rect x="402.5" y="278.0" width="14.1" height="0.0" rx="1.5" fill="#0B1F3A"><title>2025-10: клиника 0</title></rect><rect x="417.6" y="278.0" width="14.1" height="0.0" rx="1.5" fill="#C8743A"><title>2025-10: врачи 0</title></rect><text x="417.6" y="293.0" font-size="9.5" fill="#999999" text-anchor="middle">10</text><rect x="438.8" y="278.0" width="14.1" height="0.0" rx="1.5" fill="#0B1F3A"><title>2025-11: клиника 0</title></rect><rect x="453.9" y="278.0" width="14.1" height="0.0" rx="1.5" fill="#C8743A"><title>2025-11: врачи 0</title></rect><text x="453.9" y="293.0" font-size="9.5" fill="#999999" text-anchor="middle">11</text><rect x="475.0" y="278.0" width="14.1" height="0.0" rx="1.5" fill="#0B1F3A"><title>2025-12: клиника 0</title></rect><rect x="490.1" y="278.0" width="14.1" height="0.0" rx="1.5" fill="#C8743A"><title>2025-12: врачи 0</title></rect><text x="490.1" y="293.0" font-size="9.5" fill="#999999" text-anchor="middle">12</text><rect x="511.2" y="278.0" width="14.1" height="0.0" rx="1.5" fill="#0B1F3A"><title>2026-01: клиника 0</title></rect><rect x="526.4" y="278.0" width="14.1" height="0.0" rx="1.5" fill="#C8743A"><title>2026-01: врачи 0</title></rect><text x="526.4" y="293.0" font-size="9.5" fill="#999999" text-anchor="middle">01</text><rect x="547.5" y="278.0" width="14.1" height="0.0" rx="1.5" fill="#0B1F3A"><title>2026-02: клиника 0</title></rect><rect x="562.6" y="278.0" width="14.1" height="0.0" rx="1.5" fill="#C8743A"><title>2026-02: врачи 0</title></rect><text x="562.6" y="293.0" font-size="9.5" fill="#999999" text-anchor="middle">02</text><rect x="583.8" y="278.0" width="14.1" height="0.0" rx="1.5" fill="#0B1F3A"><title>2026-03: клиника 0</title></rect><rect x="598.9" y="278.0" width="14.1" height="0.0" rx="1.5" fill="#C8743A"><title>2026-03: врачи 0</title></rect><text x="598.9" y="293.0" font-size="9.5" fill="#999999" text-anchor="middle">03</text><rect x="620.0" y="278.0" width="14.1" height="0.0" rx="1.5" fill="#0B1F3A"><title>2026-04: клиника 0</title></rect><rect x="635.1" y="278.0" width="14.1" height="0.0" rx="1.5" fill="#C8743A"><title>2026-04: врачи 0</title></rect><text x="635.1" y="293.0" font-size="9.5" fill="#999999" text-anchor="middle">04</text><rect x="656.2" y="278.0" width="14.1" height="0.0" rx="1.5" fill="#0B1F3A"><title>2026-05: клиника 0</title></rect><rect x="671.4" y="278.0" width="14.1" height="0.0" rx="1.5" fill="#C8743A"><title>2026-05: врачи 0</title></rect><text x="671.4" y="293.0" font-size="9.5" fill="#999999" text-anchor="middle">05</text><rect x="692.5" y="278.0" width="14.1" height="0.0" rx="1.5" fill="#0B1F3A"><title>2026-06: клиника 0</title></rect><rect x="707.6" y="278.0" width="14.1" height="0.0" rx="1.5" fill="#C8743A"><title>2026-06: врачи 0</title></rect><text x="707.6" y="293.0" font-size="9.5" fill="#999999" text-anchor="middle">06</text><rect x="728.8" y="278.0" width="14.1" height="0.0" rx="1.5" fill="#0B1F3A"><title>2026-07: клиника 0</title></rect><rect x="743.9" y="278.0" width="14.1" height="0.0" rx="1.5" fill="#C8743A"><title>2026-07: врачи 0</title></rect><text x="743.9" y="293.0" font-size="9.5" fill="#999999" text-anchor="middle">07</text><rect x="765.0" y="215.9" width="14.1" height="62.1" rx="1.5" fill="#0B1F3A"><title>2026-08: клиника 6</title></rect><text x="772.1" y="212.9" font-size="9" fill="#1A1A1A" text-anchor="middle" font-weight="700">6</text><rect x="780.1" y="257.3" width="14.1" height="20.7" rx="1.5" fill="#C8743A"><title>2026-08: врачи 2</title></rect><text x="787.2" y="254.3" font-size="9" fill="#1A1A1A" text-anchor="middle" font-weight="700">2</text><text x="780.1" y="293.0" font-size="9.5" fill="#999999" text-anchor="middle">08</text><rect x="801.2" y="164.2" width="14.1" height="113.8" rx="1.5" fill="#0B1F3A"><title>2026-09: клиника 11</title></rect><text x="808.3" y="161.2" font-size="9" fill="#1A1A1A" text-anchor="middle" font-weight="700">11</text><rect x="816.4" y="236.6" width="14.1" height="41.4" rx="1.5" fill="#C8743A"><title>2026-09: врачи 4</title></rect><text x="823.4" y="233.6" font-size="9" fill="#1A1A1A" text-anchor="middle" font-weight="700">4</text><text x="816.4" y="293.0" font-size="9.5" fill="#999999" text-anchor="middle">09</text><rect x="837.5" y="40.0" width="14.1" height="238.0" rx="1.5" fill="#0B1F3A"><title>2026-10: клиника 23</title></rect><text x="844.6" y="37.0" font-size="9" fill="#1A1A1A" text-anchor="middle" font-weight="700">23</text><rect x="852.6" y="143.5" width="14.1" height="134.5" rx="1.5" fill="#C8743A"><title>2026-10: врачи 13</title></rect><text x="859.7" y="140.5" font-size="9" fill="#1A1A1A" text-anchor="middle" font-weight="700">13</text><text x="852.6" y="293.0" font-size="9.5" fill="#999999" text-anchor="middle">10</text><rect x="873.8" y="143.5" width="14.1" height="134.5" rx="1.5" fill="#0B1F3A"><title>2026-11: клиника 13</title></rect><text x="880.8" y="140.5" font-size="9" fill="#1A1A1A" text-anchor="middle" font-weight="700">13</text><rect x="888.9" y="247.0" width="14.1" height="31.0" rx="1.5" fill="#C8743A"><title>2026-11: врачи 3</title></rect><text x="895.9" y="244.0" font-size="9" fill="#1A1A1A" text-anchor="middle" font-weight="700">3</text><text x="888.9" y="293.0" font-size="9.5" fill="#999999" text-anchor="middle">11</text></svg></div>
+<p class="lead-p" style="margin-top:6px;">На графике — последние 24 месяца (о клинике 53, о врачах 22; врачебные — половина рейтинга, но зависят от удержания врачей); медиана ~<b>15</b>/мес (за последние полные месяцы). Последний отзыв 18 ноября 2026, 1 дн. назад.</p>
+<div class="gaps"><h3>Какой темп держать</h3><p style="margin:0 0 8px;">Ориентир по вашему штату (8 врач.): <b>минимум 17 отзывов в месяц</b>, и постепенно наращивать (сейчас медиана ~15/мес). Это не рывок и не бюджет, а система: ссылка пациенту сразу после приёма, правильный момент просьбы, работа администратора по скрипту.</p><p style="margin:0;"><b>Наращивайте плавно.</b> Собирайте только реальные отзывы живых пациентов (через МИС, метка «Отзыв проверен»): модерация строгая, 30–35% отзывов отклоняется, а резкий скачок «с нуля до десятков» площадка и конкуренты видят как аномалию — повод для проверки или жалобы. Заказные/накрученные отзывы — обнуление рейтинга и блок карточки на 3 года, откатить нельзя. Плавный рост реального потока безопасен и так же поднимает рейтинг.</p></div>
+<figure class="shot"><img src="assets/reviews_feed.png" alt="Лента отзывов" loading="lazy"><figcaption>Ваша лента отзывов: наполненность и свежесть, как их видит пациент.</figcaption></figure>
+</div></section>
+<section><div class="wrap">
+<p class="eyebrow">Сравнение с карточкой-ориентиром</p>
+<h2>Вы и «Клиника „ВЭЛМ“ на Менделеева» лицом к лицу: где разрыв и куда расти</h2>
+<p class="lead-p">Рейтинг 4.9 — там, где решает качество, вы уже сильны. Поток отзывов свежий. Объём отзывов — это вопрос темпа, а не потолка: разрыв берётся ровным потоком из месяца в месяц, машиной отзывов, а не бюджетом и не рывком. Это достижимо. Ниже видно, где именно разрыв.</p>
+<div class="pair">
+<figure><img src="assets/desktop_our_head.png" alt="Шапка «Клиника „Артрия“»" loading="lazy"><figcaption><b>«Клиника „Артрия“»</b>, это вы</figcaption></figure>
+<figure><img src="assets/desktop_top_head.png" alt="Шапка «Клиника „ВЭЛМ“ на Менделеева»" loading="lazy"><figcaption><b>«Клиника „ВЭЛМ“ на Менделеева»</b>, карточка-ориентир</figcaption></figure>
+</div>
+<div class="tablewrap" style="margin-top:16px;"><table>
+<thead><tr><th>Параметр</th><th>Вы</th><th>«Клиника „ВЭЛМ“ на Менделеева»</th><th>Вывод</th></tr></thead><tbody>
+<tr class="gap"><td>Рейтинг</td><td class="num">4.9</td><td class="num">5</td><td class="gapcol">ваш рейтинг ниже 5.0, тянется свежими отзывами</td></tr>
+<tr class="gap"><td>Отзывы</td><td class="num">75</td><td class="num">1 088</td><td class="gapcol"><b>×14.5</b> больше отзывов у карточки сравнения</td></tr>
+<tr class="gap"><td>Врачей в карточке</td><td class="num">8</td><td class="num">13</td><td class="gapcol">больше точек входа пациента</td></tr>
+<tr class="gain"><td>Видеовизитка</td><td><span class="win">✅</span></td><td><span class="lose">✗</span></td><td class="gapcol">есть, держите</td></tr>
+<tr class="gain"><td>Клуб ПроДокторов</td><td><span class="win">✅</span></td><td><span class="win">✅</span></td><td class="gapcol">в Клубе</td></tr>
+<tr class="gain"><td>Медали / награды</td><td><span class="win">✅</span></td><td><span class="win">✅</span></td><td class="gapcol">есть</td></tr>
+</tbody></table></div>
+<p class="srcnote">Цифры по публичным карточкам ПроДокторов. Отзывы и врачи достоверны, обвязка в листинге может быть неполной. Карточка для сравнения — прямой конкурент по профилю: врачи тех же специальностей (травматолог, ортопед) и общие профильные услуги; из таких — с наибольшим числом отзывов. Это не оценка качества.</p>
+<div class="cols2">
+<div class="card take"><h3>Что у карточки сравнения сильнее</h3><ul>
+<li>Больше отзывов в 14.5×, плотнее социальное доказательство</li>
+<li>Больше врачей в карточке, больше точек входа</li>
+</ul></div>
+<div class="card beat"><h3>Чем закрыть разрыв</h3><ul>
+<li>медали клиники нет: её дают клиникам, лучшим в регионе по отзывам пациентов за год (1 ноября – 31 октября), итоги в начале ноября</li>
+<li>мало фото (3): добавить фасад и вход, регистратуру, холл, зону ожидания, кабинеты без врачей и пациентов. Нельзя: врачи за работой, пациенты, документы, медоборудование, акции и цены, мероприятия, надписи поверх фото</li>
+</ul></div>
+</div>
+<p class="quote">Пациент в вашем районе сравнивает карточки и идёт туда, где больше свежих отзывов и полнее карточка. Каждый месяц без ровного потока — это записи, которые уходят соседу. Решение — системный сбор отзывов и дозакрытие баллов 650. Бюджет тут не главный рычаг; горизонт берётся процессом — это то, что мы отстраиваем вместе.</p>
+</div></section>
+<section><div class="wrap">
+<p class="eyebrow">Кто рядом с вами</p>
+<h2>Клиники в радиусе 10 км от вас</h2>
+<p class="lead-p">Это ваше реальное конкурентное поле: 51 клиник рядом, за тех же пациентов. Отсортированы по числу отзывов, ваша строка выделена.</p>
+<div class="tablewrap"><table>
+<thead><tr><th>Клиника</th><th>Дистанция</th><th>Рейтинг</th><th>Отзывы</th><th>Врачей</th></tr></thead><tbody>
+<tr><td>Клиника «Провены»</td><td class="num">4.98 км</td><td class="num">5</td><td class="num">1 836</td><td class="num">8</td></tr>
+<tr><td>Клиника «Мастерская Красоты»</td><td class="num">2.65 км</td><td class="num">4.7</td><td class="num">1 309</td><td class="num">7</td></tr>
+<tr><td>Клиника «Юхелф»</td><td class="num">0.97 км</td><td class="num">5</td><td class="num">1 176</td><td class="num">16</td></tr>
+<tr><td>Клиника «Доктор Вен»</td><td class="num">8.66 км</td><td class="num">5</td><td class="num">1 123</td><td class="num">7</td></tr>
+<tr><td>Клиника «Варикоза нет»</td><td class="num">4.55 км</td><td class="num">5</td><td class="num">1 038</td><td class="num">10</td></tr>
+<tr><td>Клиника «Giovane»</td><td class="num">0.3 км</td><td class="num">5</td><td class="num">766</td><td class="num">27</td></tr>
+<tr><td>Клиника «Стоп Варикоз»</td><td class="num">6.03 км</td><td class="num">5</td><td class="num">636</td><td class="num">10</td></tr>
+<tr><td>«Анг-клиник»</td><td class="num">1.41 км</td><td class="num">4.7</td><td class="num">493</td><td class="num">6</td></tr>
+<tr><td>Медицинский центр «Кластер Клиник»</td><td class="num">4.56 км</td><td class="num">5</td><td class="num">476</td><td class="num">17</td></tr>
+<tr><td>Клиника «Темед»</td><td class="num">3.48 км</td><td class="num">5</td><td class="num">432</td><td class="num">9</td></tr>
+<tr><td>Психологический центр «Псимед»</td><td class="num">6.26 км</td><td class="num">5</td><td class="num">418</td><td class="num">14</td></tr>
+<tr><td>«Клиника травматологии и реабилитации»</td><td class="num">5.69 км</td><td class="num">5</td><td class="num">348</td><td class="num">14</td></tr>
+<tr class="gain"><td>Клиника „Артрия“ (вы)</td><td class="num">0 км</td><td class="num">—</td><td class="num">75</td><td class="num">8</td></tr>
+</tbody></table></div>
+<p class="srcnote">Показаны 12 из 51 соседей по числу отзывов. рейтинг снят со звёздной шкалы списка. У клиник с большим числом отзывов он почти у всех 5,0, поэтому решает не он, а объём свежих отзывов.</p>
+</div></section>
+<section><div class="wrap">
+<p class="eyebrow">Премия ПроДокторов</p>
+<h2>Премия ПроДокторов 2027: отзывы считаются уже с 1 ноября</h2>
+<p class="lead-p">Медаль «Победитель премии ПроДокторов» получают клиники, которые стали одними из лучших в регионе по отзывам пациентов за год. Год премии длится с 1 ноября по 31 октября, итоги объявляют в начале ноября. В зачёт клиники идут только отзывы на странице клиники: отзывы на страницах врачей работают на премию врачей.</p>
+<p>Медали клиники у вас пока нет. Ваши врачи стали победителями премии 2023, 2025, 2026: это их личные награды, в зачёт клиники они не идут. За год премии 2026 (01.11.2025–31.10.2026) на странице клиники опубликовано <b>40 отзывов о клинике</b> и ещё 19 о врачах. С 1 ноября в зачёт премии 2027 идут уже <b>13 о клинике</b>. Первый отзыв на карточке появился 17.08.2026: прошлый год премии вы прошли не целиком, а нынешний станет первым полным.</p>
+<h3>Прямые конкуренты: кто может обогнать</h3>
+<p>Это клиники города, где работают минимум двое врачей ваших основных специальностей (травматолог, ортопед) и есть общие профильные услуги (Блокада, Магнитотерапия, Пункция). «Профильная» значит, что такие врачи составляют не меньше трети штата, «многопрофильная» значит, что меньше. Отзывы о клинике посчитаны по их открытым лентам отзывов.</p>
+<div class="tablewrap"><table><thead><tr><th>Клиника</th><th>Тип</th><th>Профильных врачей</th><th>Отзывов о клинике за 2026</th><th>С 1 ноября</th><th>Медаль клиники</th><th>Всего отзывов</th></tr></thead><tbody>
+<tr class="ours"><td>Клиника „Артрия“ (вы)</td><td>—</td><td>6 из 8</td><td class="num">40</td><td class="num">13</td><td>нет</td><td class="num">75</td></tr>
+<tr><td><a href="https://prodoctorov.ru/ufa/lpu/42934-klinika-velm-na-mendeleeva/" target="_blank" rel="noopener">Клиника «ВЭЛМ» на Менделеева</a></td><td>профильная</td><td>4 из 13</td><td class="num">33</td><td class="num">4</td><td>2022</td><td class="num">1 088</td></tr>
+<tr><td><a href="https://prodoctorov.ru/ufa/lpu/44297-klinika-nevrologii-i-ortopedii/" target="_blank" rel="noopener">«Клиника неврологии и ортопедии» на Революционной</a></td><td>профильная</td><td>5 из 15</td><td class="num">10</td><td class="num">2</td><td>нет</td><td class="num">519</td></tr>
+<tr><td><a href="https://prodoctorov.ru/ufa/lpu/108813-klinika-travmatologii-i-reabilitacii/" target="_blank" rel="noopener">«Клиника травматологии и реабилитации»</a></td><td>профильная</td><td>5 из 14</td><td class="num">73</td><td class="num">3</td><td>нет</td><td class="num">348</td></tr>
+<tr><td><a href="https://prodoctorov.ru/ufa/lpu/95653-nekogda-bolet/" target="_blank" rel="noopener">Медицинский центр «Некогда болеть»</a></td><td>профильная</td><td>4 из 11</td><td class="num">24</td><td class="num">1</td><td>нет</td><td class="num">111</td></tr>
+<tr><td><a href="https://prodoctorov.ru/ufa/lpu/32164-zdorove-zhenshiny/" target="_blank" rel="noopener">«Клиника Фомина» на Кирова</a></td><td>многопрофильная</td><td>2 из 90</td><td class="num">91</td><td class="num">8</td><td>2024, 2025, 2026</td><td class="num">1 208</td></tr>
+<tr><td><a href="https://prodoctorov.ru/ufa/lpu/89042-klinika-medklik-ranee-mnogoklinika-travmynet/" target="_blank" rel="noopener">Клиника «Медклик» (ранее «Многоклиника» («Травмы.нет»))</a></td><td>многопрофильная</td><td>6 из 40</td><td class="num">24</td><td class="num">0</td><td>нет</td><td class="num">1 051</td></tr>
+</tbody></table></div>
+<p>С 1 ноября вы собрали больше отзывов о клинике, чем любой прямой конкурент (13 против 8 у «„Клиника Фомина“ на Кирова»). Темп надо удержать на весь год. Планку задаёт «„Клиника Фомина“ на Кирова», победитель премии 2026: за год 91 отзыв о клинике, около 8 в месяц. Для медали ориентир: не ниже этого темпа все двенадцать месяцев.</p>
+<div class="ctx"><h3 style="margin-top:0;">Как собирать отзывы: что работает в клиниках, которые мы ведём</h3><ul>
+<li><b>Платите администратору бонус за опубликованный отзыв, а не за обещанный.</b> Раз в месяц сверяйте журнал администраторов с кабинетом ПроДокторов и платите только за отзывы, прошедшие модерацию. В одной из клиник, которые мы ведём, так держится 30–50 отзывов в месяц только на ПроДокторов.</li>
+<li><b>Для премии просите отзыв о клинике.</b> В зачёт идёт только страница клиники. В одной из наших клиник за год больше половины отзывов ушло на страницы врачей и в премию клиники не засчиталось. Отзыв о враче тоже нужен, он даёт половину рейтинга, поэтому просите оба, но первой давайте ссылку на страницу клиники.</li>
+<li><b>Держите темп с 1 ноября.</b> Первые месяцы года премии потом не вернуть: в одной из наших клиник ноябрь–январь дали три отзыва о клинике, и рывок в октябре этот провал уже не закрыл.</li>
+<li><b>QR «Сила отзыва» в каждом кабинете.</b> Программа у вас уже подключена: на карточке плашка «Дарим скидку 300 ₽ за честный отзыв». Проверьте, что тейбл-тент стоит на стойке, а стикеры с QR висят в каждом кабинете: пациент получает промокод 300 ₽ за опубликованный отзыв и возвращается.</li>
+<li><b>Выдавайте пациенту документ о приёме.</b> Заключение или акт с ФИО врача, датой и печатью ускоряет проверку отзыва: без подтверждения часть отзывов уходит на исправление и выпадает из потока.</li>
+<li><b>Записи через ПроДокторов приносят отзывы сами.</b> Колл-центр площадки обзванивает пациентов, записавшихся через портал, через 1–7 дней после приёма и сам оформляет отзыв. Чем больше записей через карточку, тем больше таких отзывов.</li>
+</ul></div>
+<p class="srcnote">Источники: справочник наград prodoctorov.ru/info/medal/, Положение о премии ПроДокторов, справка ПроДокторов «Сила отзыва», «Сбор отзыва через звонок», памятка для клиники о помощи пациенту при отзыве.</p>
+</div></section>
+<section><div class="wrap">
+<p class="eyebrow">Реклама и ставки</p>
+<h2>Площадка не показывает конкурентов на вашей карточке</h2>
+<p class="lead-p">Блок «Другие клиники города» на вашей карточке не показывается — пациент не видит ссылок на соседние клиники прямо у вас. Это плюс: такой блок крутится на тарифах «Лайт» и «Стандарт», а на «Профи» и выше его убирают. У вас он уже не уводит пациента к конкурентам.</p>
+<p style="margin-top:18px;"><b>Вы сами уже в спецразмещении.</b> В общем списке раздела «Специализированные клиники» ваша карточка стоит на 3-м месте с меткой «Спецразмещение» (платных мест наверху списка: 3). Значит, вы платите за позицию каждый день. Сколько стоит это место и сколько записей оно приносит, видно только в кабинете: с этого вопроса и начинается разговор о ставках.</p>
+<div class="ctx" style="margin-top:18px;"><h3 style="margin-top:0;">Как устроены ставки</h3><p style="margin-bottom:0;">В платных разделах (дорогие услуги и приёмы узких специалистов) первые места это аукцион спецразмещения по второй цене: рекомендуемая ставка растёт от вчерашнего лидера. Для понимания порядка цифр: в крупном городе спецразмещение идёт от 1500 рублей в сутки за позицию. Ставку перебивают каждый день. Конкуренты уже платят, чтобы показываться рядом с вами. Точную ставку по вашим услугам в вашем городе я снимаю из вашего кабинета на этапе работы.</p></div>
+</div></section>
+<section><div class="wrap">
+<p class="eyebrow">Тариф и оформление страницы</p>
+<h2>Тариф «Ультима»: страница оформлена на 6 пунктов из 8</h2>
+<p class="lead-p">«Ультима» это старший тариф площадки. С 7 сентября 2026 года он даёт две вещи сверх «Профи»: брендированную страницу клиники и передачу данных о записях и расходах на ПроДокторов в сквозную аналитику. Для небольшой клиники это 2745 ₽ за 30 дней, на 915 ₽ дороже «Профи». Баллов ранжирования оформление не добавляет: оно работает на доверие пациента, который уже открыл вашу страницу.</p>
+<div class="tablewrap"><table><thead><tr><th>Что настраивается</th><th>Статус</th><th>Что видно на странице</th></tr></thead><tbody>
+<tr><td>Реклама конкурентов на странице</td><td><span class="chip ok">✓ в порядке</span></td><td>не показывается: отключение входит в «Профи» и выше</td></tr>
+<tr><td>Обложка</td><td><span class="chip ok">✓ в порядке</span></td><td>загружена (видна в шапке на компьютере)</td></tr>
+<tr><td>Фирменный цвет</td><td><span class="chip ok">✓ в порядке</span></td><td>выбран #9F6825: им окрашены кнопки записи и акценты</td></tr>
+<tr><td>Логотип</td><td><span class="chip ok">✓ в порядке</span></td><td>стоит поверх обложки</td></tr>
+<tr><td>Специализации</td><td><span class="chip part">◐ частично</span></td><td>3 из 4, есть место ещё под 1 направление</td></tr>
+<tr><td>Преимущества</td><td><span class="chip ok">✓ в порядке</span></td><td>заполнено: 6 из 6</td></tr>
+<tr><td>Видеовизитка в блоке преимуществ</td><td><span class="chip ok">✓ в порядке</span></td><td>преимущества выстроены вокруг видео клиники</td></tr>
+<tr><td>Информационные баннеры</td><td><span class="chip no">✗ нет</span></td><td>не используются: место для фактических новостей вроде нового врача, новой услуги, графика</td></tr>
+</tbody></table></div>
+<div class="gaps"><h3>Что в текстах страницы стоит поправить</h3><ul>
+<li><b>преимущество «Травматологи-ортопеды»</b>: в тексте упомянут реабилитолог, а среди 8 врачей карточки такой специальности нет.</li>
+</ul><p style="margin:0;">Тексты брендированной страницы проходят модерацию площадки до 3 рабочих дней. Правила: только факты, без оценок, цен, призывов и сравнений с другими клиниками.</p></div>
+<div class="ctx"><h3 style="margin-top:0;">Что снаружи не проверить</h3><ul>
+<li>сквозная аналитика, главная денежная часть «Ультимы»: подключена ли она через МедФлекс, снаружи не видно.</li>
+<li>закреплённые врачи (до 5) и выбранные отзывы (до 3): снаружи они выглядят как обычный порядок.</li>
+<li>мобильная обложка: она грузится отдельным файлом и видна только с телефона.</li>
+</ul><p style="margin-bottom:0;">Деньги в этом тарифе возвращает сквозная аналитика: она сводит расходы на ПроДокторов с реальными чеками из вашей медицинской программы. Если она не подключена, «Ультима» работает только как оформление.</p></div>
+<p class="srcnote">Состав тарифов сверен по личному кабинету площадки, раздел «Версия ПО», 19.11.2026; требования к брендированной странице — справка ПроДокторов «Брендирование страницы клиники».</p>
+</div></section>
+<section><div class="wrap">
+<p class="eyebrow">Взгляд с телефона</p>
+<h2>Как вашу карточку видят со смартфона</h2>
+<p class="lead-p">Большинство пациентов открывают ПроДокторов с телефона. Это первый экран, по которому решают, записаться или листать дальше.</p>
+<div class="mob">
+<figure><img src="assets/mobile_our_head.png" alt="Мобайл «Клиника „Артрия“»" loading="lazy"><figcaption>«Клиника „Артрия“», вы</figcaption></figure>
+<figure><img src="assets/mobile_top_head.png" alt="Мобайл «Клиника „ВЭЛМ“ на Менделеева»" loading="lazy"><figcaption>«Клиника „ВЭЛМ“ на Менделеева», карточка-ориентир</figcaption></figure>
+</div>
+</div></section>
+<section><div class="wrap">
+<div class="ctx"><h3 style="margin-top:0;">Это срез снаружи</h3><p style="margin-bottom:0;">Я взял только то, что видит пациент в вашей карточке. То, что даёт записи, лежит глубже и снаружи его не видно в принципе: ваш точный балл ранжирования, реальная ставка аукциона по вашим услугам, расчёт во что обходится каждая позиция вниз. Снаружи диагноз, в кабинете деньги. Как снять эти цифры из кабинета, заполнить карточку на баллы 650 и собрать всю воронку клиники, разбираем по шагам в курсе ниже.</p></div>
+</div></section>
+<section><div class="wrap">
+<div class="cta">
+<h2>Часть 2: разберите всю воронку клиники, не только карточку</h2>
+<p>Всё выше это диагноз одного канала. Но пациент, который нашёл вас на ПроДокторов, дальше идёт по всей воронке. Он звонит в колл-центр, доходит до первичного приёма, слышит план лечения. Запись утекает не только в карточке. Она утекает на дозвоне, на администраторе, на первом приёме. Площадка приводит человека, а теряете его вы уже внутри клиники.</p>
+<p>Я собрал разбор полной маркетинговой воронки клиники в курс «Аудит-конструктор воронки». Вы сами, по шагам, находите и закрываете места, где утекают деньги. Что входит:</p>
+<ul style="color:#E7ECF2;max-width:640px;margin:0 0 18px;padding-left:20px;line-height:1.7;"><li>Реклама и геосервисы: трафик и заполнение карточки ПроДокторов на баллы 650.</li><li>Колл-центр: как звонок превращается в запись, скрипты и контроль администратора.</li><li>Первичный приём и план лечения: доходимость и закрытие в лечение.</li><li>Дашборд воронки: где именно вы теряете пациентов, по цифрам.</li></ul>
+<p>4 модуля, проходите сами в своём темпе. 4990 ₽.</p>
+<p style="font-weight:700;color:#fff;margin-bottom:18px;">Карточка это вход. Деньги в клинике решает вся воронка. Соберите её по шагам.</p>
+<a class="btn" href="https://course.nikademia.ru/audit-konstruktor?utm_source=prodoctorov&amp;utm_medium=card_audit&amp;utm_campaign=pd_card_razbor" target="_blank" rel="noopener" id="cta-link">Открыть курс «Аудит-конструктор воронки»</a>
+</div>
+</div></section>
+<footer class="sig"><div class="wrap">
+<b>Разбор для клиники «Клиника „Артрия“»</b><br>
+Уфа · 19 ноября 2026. Бизнес-трекинг медицинских клиник.
+</div></footer>
+</body></html>
